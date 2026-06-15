@@ -56,33 +56,6 @@
 
 ---
 
-## 📐 System Architecture
-
-```
-                                  +-----------------------+
-                                  |   React 19 + Vite     |
-                                  |   Frontend Client     |
-                                  +-----------+-----------+
-                                              |
-                                HTTP REST / JSON Payload
-                                              |
-                                              v
-                                  +-----------------------+
-                                  |   Express 5 Backend   |
-                                  |   Node.js (v22 Engine)|
-                                  +---+-------+-------+---+
-                                      |       |       |
-                 +--------------------+       |       +--------------------+
-                 |                            |                            |
-                 v                            v                            v
-   +---------------------------+  +------------------------+  +--------------------------+
-   |   Neon PostgreSQL DB      |  |  OpenRouter AI (Llama) |  |   Cloudinary CDN Storage |
-   |  (Drizzle ORM Driver)     |  |  (Content Moderation)  |  |  (Direct Signed Uploads) |
-   +---------------------------+  +------------------------+  +--------------------------+
-```
-
----
-
 ## 🗄️ Database Schema & Relational Models
 
 InkForge utilizes **Neon PostgreSQL** managed via **Drizzle ORM** with 6 relational tables:
