@@ -277,4 +277,56 @@ export class PostService {
 
         return updatedPost;
     }
+
+    static async getMyPosts({ authorId, page = 1, limit = 10, status }) {
+        const parsedPage = Math.max(1, parseInt(page, 10));
+        const parsedLimit = Math.min(50, Math.max(1, parseInt(limit, 10)));
+        const offset = (parsedPage - 1) * parsedLimit;
+
+        const whereConditions = [eq(posts.authorId, authorId)];
+        if (status && status !== "all") {
+            whereConditions.push(eq(posts.status, status));
+        }
+
+        const combinedWhere = and(...whereConditions);
+
+        const [totalCountObj] = await db
+            .select({ count: count() })
+            .from(posts)
+            .where(combinedWhere);
+
+        const totalItems = Number(totalCountObj?.count || 0);
+        const totalPages = Math.ceil(totalItems / parsedLimit);
+
+        const myPostsList = await db
+            .select({
+                id: posts.id,
+                title: posts.title,
+                slug: posts.slug,
+                content: posts.content,
+                coverImageUrl: posts.coverImageUrl,
+                status: posts.status,
+                aiFlags: posts.aiFlags,
+                aiSuggestedContent: posts.aiSuggestedContent,
+                rejectionReason: posts.rejectionReason,
+                publishedAt: posts.publishedAt,
+                createdAt: posts.createdAt,
+                updatedAt: posts.updatedAt,
+            })
+            .from(posts)
+            .where(combinedWhere)
+            .orderBy(desc(posts.createdAt))
+            .limit(parsedLimit)
+            .offset(offset);
+
+        return {
+            data: myPostsList,
+            pagination: {
+                currentPage: parsedPage,
+                totalPages,
+                totalItems,
+                hasNextPage: parsedPage < totalPages,
+            },
+        };
+    }
 }

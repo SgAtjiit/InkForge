@@ -9,6 +9,7 @@ import { CreatePostPage } from "../pages/CreatePostPage.jsx";
 import { PostDetailPage } from "../pages/PostDetailPage.jsx";
 import { SavedPostsPage } from "../pages/SavedPostsPage.jsx";
 import { AdminDashboardPage } from "../pages/AdminDashboardPage.jsx";
+import MyPostsPage from "../pages/MyPostsPage.jsx";
 import { LoginPage } from "../pages/LoginPage.jsx";
 import { SignupPage } from "../pages/SignupPage.jsx";
 import { ProtectedRoute } from "./ProtectedRoute.jsx";
@@ -31,6 +32,14 @@ export const AppRoutes = () => {
               element={
                 <ProtectedRoute>
                   <CreatePostPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/my-posts"
+              element={
+                <ProtectedRoute>
+                  <MyPostsPage />
                 </ProtectedRoute>
               }
             />

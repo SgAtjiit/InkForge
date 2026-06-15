@@ -66,3 +66,13 @@ export const updatePostStatus = asyncHandler(async (req, res) => {
     });
     return res.status(200).json(new ApiResponse(200, updatedPost, `Post status updated to ${req.body.status}`));
 });
+
+export const getMyPosts = asyncHandler(async (req, res) => {
+    const result = await PostService.getMyPosts({
+        authorId: req.user.id,
+        ...req.query,
+    });
+    return res.status(200).json(new ApiResponse(200, result, "User posts fetched successfully"));
+});
+
+

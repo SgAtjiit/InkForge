@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Feather, PenSquare, Search, Bookmark, ShieldCheck, LogOut, Menu, X } from "lucide-react";
+import { Feather, PenSquare, Search, Bookmark, ShieldCheck, LogOut, Menu, X, FileText } from "lucide-react";
 
 export const Navbar = ({ user, onLogout }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -68,6 +68,15 @@ export const Navbar = ({ user, onLogout }) => {
                           {user.role}
                         </span>
                       </div>
+
+                      <Link
+                        to="/my-posts"
+                        onClick={() => setUserDropdownOpen(false)}
+                        className="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50 transition-colors"
+                      >
+                        <FileText className="w-4 h-4 text-indigo-500" />
+                        <span>My Posts</span>
+                      </Link>
 
                       <Link
                         to="/saved"
@@ -154,6 +163,14 @@ export const Navbar = ({ user, onLogout }) => {
               >
                 <PenSquare className="w-5 h-5" />
                 <span>Write Post</span>
+              </Link>
+              <Link
+                to="/my-posts"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 px-3 py-2 rounded-lg font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50"
+              >
+                <FileText className="w-5 h-5 text-indigo-500" />
+                <span>My Authored Posts</span>
               </Link>
               <Link
                 to="/saved"

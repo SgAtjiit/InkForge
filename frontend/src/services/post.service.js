@@ -10,6 +10,11 @@ export const getFeedPostsAPI = async (params = {}) => {
   return response.data;
 };
 
+export const getMyPostsAPI = async (params = {}) => {
+  const response = await api.get("/posts/me", { params });
+  return response.data;
+};
+
 export const getPostBySlugAPI = async (slug) => {
   const response = await api.get(`/posts/${slug}`);
   return response.data;
