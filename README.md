@@ -162,15 +162,6 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
 
-## 🔐 Default Demo Accounts
-
-| Role | Email | Password | Access Rights |
-| :--- | :--- | :--- | :--- |
-| **Admin** | `admin@inkforge.dev` | `AdminPass123` | Full Access + `/admin` Moderation Dashboard + Instant Publishing |
-| **User** | `alex.rivera@dev.io` | `UserPass123!` | Post Creation, Threaded Comments, Bookmarks |
-
----
-
 ## 📡 API Reference Overview
 
 | Domain | Method | Endpoint | Description | Auth Required |
