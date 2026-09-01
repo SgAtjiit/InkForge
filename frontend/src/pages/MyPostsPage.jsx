@@ -13,9 +13,9 @@ import {
   Filter 
 } from "lucide-react";
 import { getMyPostsAPI, deletePostAPI } from "../services/post.service";
-import PostStatusBadge from "../components/posts/PostStatusBadge";
-import PostSkeleton from "../components/posts/PostSkeleton";
-import Pagination from "../components/common/Pagination";
+import { PostStatusBadge } from "../components/posts/PostStatusBadge";
+import { PostSkeleton } from "../components/posts/PostSkeleton";
+import { Pagination } from "../components/common/Pagination";
 import { useNotification } from "../context/NotificationContext";
 import { formatDate } from "../utils/formatters";
 
